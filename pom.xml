@@ -9,6 +9,49 @@
     <version>1.0-SNAPSHOT</version>
 
 
+    <build>
+    <plugins>
+
+        <!--Maven Clean plugin to Clean and it will remove Report folder too-->
+        <plugin>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>2.6.1</version>
+            <configuration>
+                <filesets>
+                    <fileset>
+                        <directory>test-output</directory>
+                    </fileset>
+                </filesets>
+            </configuration>
+        </plugin>
+        <!--Maven Surefire plugin to execute Test Suite and here ReportNG report is generated via Surefire -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.18.1</version>
+            <configuration>
+                <systemPropertyVariables>
+                    <org.uncommons.reportng.escape-output>true</org.uncommons.reportng.escape-output>
+                    <org.uncommons.reportng.title>C4 UI Test Automation</org.uncommons.reportng.title>
+                </systemPropertyVariables>
+
+                <properties>
+                    <property>
+                        <name>usedefaultlisteners</name>
+                        <value>false</value>
+                    </property>
+                    <property>
+                        <name>listener</name>
+                        <value>org.uncommons.reportng.HTMLReporter, com.channel4ui.listners.TestListeners</value>
+                    </property>
+                </properties>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
@@ -33,6 +76,26 @@
             <groupId>com.codoid.products</groupId>
             <artifactId>fillo</artifactId>
             <version>1.18</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.uncommons</groupId>
+            <artifactId>reportng</artifactId>
+            <version>1.1.4</version>
+            <!--scope>test</scope!-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.testng</groupId>
+                    <artifactId>testng</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <!--used by ReportNG-->
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>3.0</version>
+            <!--scope>test</scope!-->
         </dependency>
 
     </dependencies>
