@@ -1,7 +1,7 @@
-package com.channel4.qa.pageFactories;
+package com.channel4ui.pageFactories;
 
-import com.channel4.qa.pages.CategoriesPage;
-import com.channel4.qa.pages.HomePage;
+import com.channel4ui.pages.CategoriesPage;
+import com.channel4ui.pages.HomePage;
 import org.openqa.selenium.WebDriver;
 
 public class UIPageCollection {

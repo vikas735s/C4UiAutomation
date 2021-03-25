@@ -1,4 +1,4 @@
-package com.channel4.qa.utils;
+package com.channel4ui.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

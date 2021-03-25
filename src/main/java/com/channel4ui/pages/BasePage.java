@@ -1,6 +1,6 @@
-package com.channel4.qa.pages;
+package com.channel4ui.pages;
 
-import com.channel4.qa.utils.UITestConstants;
+import com.channel4ui.utils.UITestConstants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -38,30 +38,52 @@ public class BasePage {
 
     public void click(By locator, String locatorName, long... waitTime) {
         try {
-            Reporter.log("Going to Click "+locatorName+" element", true);
+            Reporter.log("Going to Click " + locatorName + " element", true);
             driver.get().findElement(locator).click();
-            Reporter.log("Element "+locatorName+" is Clicked", true);
+            Reporter.log("Element " + locatorName + " is Clicked", true);
         } catch (Exception e) {
-            Reporter.log("Wait for Element "+locatorName+" to Clickable", true);
+            Reporter.log("Wait for Element " + locatorName + " to Clickable", true);
             try {
                 if (waitTime.length == 0) {
                     waitForElementToBeClickable(locator);
-                    Reporter.log("Element "+locatorName+" is Clickable", true);
+                    Reporter.log("Element " + locatorName + " is Clickable", true);
                     driver.get().findElement(locator).click();
                 } else {
                     waitForElementToBeClickable(locator, waitTime[0]);
-                    Reporter.log("Element "+locatorName+" is Clickable", true);
+                    Reporter.log("Element " + locatorName + " is Clickable", true);
                     driver.get().findElement(locator).click();
                 }
-                Reporter.log("Element "+locatorName+"Clicked", true);
+                Reporter.log("Element " + locatorName + "Clicked", true);
 
             } catch (Exception e1) {
                 JavascriptExecutor js = (JavascriptExecutor) driver.get();
                 js.executeScript("arguments[0].click();", driver.get().findElement(locator));
-                Reporter.log("Element "+locatorName+"Clicked", true);
+                Reporter.log("Element " + locatorName + "Clicked", true);
             }
         }
 
+    }
+
+    /**
+     * Click method
+     */
+
+    public void clickByJS(By locator, String locatorName, long... waitTime) {
+
+        if (waitTime.length == 0) {
+            waitForElementToBeClickable(locator);
+
+            Reporter.log("Element " + locatorName + " is Clickable", true);
+            driver.get().findElement(locator).click();
+        } else {
+            waitForElementToBeClickable(locator, waitTime[0]);
+            Reporter.log("Element " + locatorName + " is Clickable", true);
+            driver.get().findElement(locator).click();
+        }
+
+        JavascriptExecutor js = (JavascriptExecutor) driver.get();
+        js.executeScript("arguments[0].click();", driver.get().findElement(locator));
+        Reporter.log("Element " + locatorName + "Clicked", true);
     }
 
 
@@ -112,9 +134,8 @@ public class BasePage {
 
     /**
      * Scroll in view
-     *
      */
-    public void scrollInView(By locator){
+    public void scrollInView(By locator) {
         WebElement element = driver.get().findElement(locator);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
         //js.executeScript("arguments[0].scrollIntoView();", element);
@@ -124,23 +145,23 @@ public class BasePage {
     /**
      * get elements using locator
      */
-    public List<WebElement> getElements(By loc){
+    public List<WebElement> getElements(By loc) {
         return driver.get().findElements(loc);
     }
 
-    public void clickAcceptPrivacyPopUp(){
+    public void clickAcceptPrivacyPopUp() {
         try {
             Reporter.log("Going to accept Privacy popup");
             click(acceptPrivacyPopUp, "acceptPrivacyPopUp");
             //waitForElementToBeInVisible(acceptPrivacyPopUp);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Reporter.log("Privacy popup did not appear", true);
         }
 
     }
 
-    public  boolean waitForPageLoad( ) {
+    public boolean waitForPageLoad() {
         try {
             Boolean result = false;
             JavascriptExecutor js = (JavascriptExecutor) driver.get();
@@ -153,7 +174,7 @@ public class BasePage {
                 }
             }
             return result;
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }

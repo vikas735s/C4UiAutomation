@@ -1,7 +1,7 @@
-package com.channel4.qa.uiTest;
+package com.channel4ui;
 
-import com.channel4.qa.pageFactories.UIPageCollection;
-import com.channel4.qa.utils.UITestConstants;
+import com.channel4ui.pageFactories.UIPageCollection;
+import com.channel4ui.utils.UITestConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -80,11 +80,11 @@ public class BaseTest {
      */
     @AfterMethod(alwaysRun = true)
     public void closeDriver() {
-       /* try {
+        try {
             Reporter.log("Closing Browser for Test  ", true);
             driver.get().quit();
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
     }
 }
