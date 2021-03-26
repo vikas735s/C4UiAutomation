@@ -8,5 +8,6 @@ public class CategoriesBaseTest extends BaseTest {
     interface CategoryPageTestData{
 
         int SLICE_ITEM_COUNT = 40;
+        String CATEGORIES_Tab_URL = "categories/";
     }
 }

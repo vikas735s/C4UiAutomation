@@ -82,7 +82,7 @@ public class BaseTest {
     public void closeDriver() {
         try {
             Reporter.log("Closing Browser for Test  ", true);
-            driver.get().quit();
+            //driver.get().quit();
         } catch (Exception e) {
             e.printStackTrace();
         }

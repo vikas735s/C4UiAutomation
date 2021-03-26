@@ -24,6 +24,7 @@ public class HomePage extends BasePage {
 
     public void clickCategoriesTab(){
         click(categoriesTab, "categoriesTab");
+        waitForPageLoad();
     }
 
 

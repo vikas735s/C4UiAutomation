@@ -30,6 +30,9 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>2.18.1</version>
             <configuration>
+                <suiteXmlFiles>
+                    <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                </suiteXmlFiles>
                 <systemPropertyVariables>
                     <org.uncommons.reportng.escape-output>true</org.uncommons.reportng.escape-output>
                     <org.uncommons.reportng.title>C4 UI Test Automation</org.uncommons.reportng.title>

@@ -70,17 +70,11 @@ public class BasePage {
 
     public void clickByJS(By locator, String locatorName, long... waitTime) {
 
-        if (waitTime.length == 0) {
+        if (waitTime.length == 0)
             waitForElementToBeClickable(locator);
-
-            Reporter.log("Element " + locatorName + " is Clickable", true);
-            driver.get().findElement(locator).click();
-        } else {
+        else
             waitForElementToBeClickable(locator, waitTime[0]);
-            Reporter.log("Element " + locatorName + " is Clickable", true);
-            driver.get().findElement(locator).click();
-        }
-
+        Reporter.log("Element " + locatorName + " is Clickable", true);
         JavascriptExecutor js = (JavascriptExecutor) driver.get();
         js.executeScript("arguments[0].click();", driver.get().findElement(locator));
         Reporter.log("Element " + locatorName + " Clicked", true);
@@ -137,9 +131,7 @@ public class BasePage {
      */
     public void scrollInView(By locator) {
         WebElement element = driver.get().findElement(locator);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-        //js.executeScript("arguments[0].scrollIntoView();", element);
-
+        ((JavascriptExecutor) driver.get()).executeScript("arguments[0].scrollIntoView();", element);
     }
 
     /**
@@ -179,5 +171,9 @@ public class BasePage {
             return false;
         }
 
+    }
+
+    public void reloadPage() {
+        driver.get().get(driver.get().getCurrentUrl());
     }
 }

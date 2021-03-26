@@ -22,10 +22,26 @@ public class CategoriesPage extends BasePage {
     }
 
     public void clickShowMoreBtn(){
-        //scrollInView(showMoreBtn);
-        waitForPageLoad();
+        scrollInView(showMoreBtn);
         clickByJS(showMoreBtn, "showMoreBtn");
         waitForPageLoad();
+        /*try {
+            scrollInView(showMoreBtn);
+            clickByJS(showMoreBtn, "showMoreBtn");
+            waitForPageLoad();
+        }catch (Exception e){
+            e.printStackTrace();
+            reloadPage();
+                try {
+                    scrollInView(showMoreBtn);
+                    clickByJS(showMoreBtn, "showMoreBtn");
+                    waitForPageLoad();
+                }catch (Exception f){
+                    f.printStackTrace();
+                }
+
+        }
+*/
     }
 
 
