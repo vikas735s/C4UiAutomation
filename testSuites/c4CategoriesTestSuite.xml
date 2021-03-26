@@ -9,7 +9,7 @@
     <test name="C4 categories UI Tests">
         <classes>
             <class
-                    name="com.channel4ui.CategoriesPageTest" />
+                    name="com.channel4ui.categoriesTest.CategoriesPageTest" />
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
