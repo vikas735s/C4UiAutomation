@@ -25,6 +25,7 @@ public class CategoriesPageTest extends CategoriesBaseTest {
     public void test_CategoriesPage_SliceCounts(){
         driver.get().get(UITestConstants.HOME_PAGE_URL);
         getUIPageCollection().getHomePage().clickAcceptPrivacyPopUp();
+        getUIPageCollection().getHomePage().reloadPage();
         getUIPageCollection().getHomePage().clickCategoriesTab();
         getUIPageCollection().getCategoriesPage().clickAcceptPrivacyPopUp();
         int sliceCount = getUIPageCollection().getCategoriesPage().getSliceItemCount();
