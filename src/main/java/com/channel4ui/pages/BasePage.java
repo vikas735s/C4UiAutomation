@@ -83,7 +83,7 @@ public class BasePage {
 
         JavascriptExecutor js = (JavascriptExecutor) driver.get();
         js.executeScript("arguments[0].click();", driver.get().findElement(locator));
-        Reporter.log("Element " + locatorName + "Clicked", true);
+        Reporter.log("Element " + locatorName + " Clicked", true);
     }
 
 

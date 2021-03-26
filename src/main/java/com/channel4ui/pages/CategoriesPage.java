@@ -23,7 +23,9 @@ public class CategoriesPage extends BasePage {
 
     public void clickShowMoreBtn(){
         //scrollInView(showMoreBtn);
+        waitForPageLoad();
         clickByJS(showMoreBtn, "showMoreBtn");
+        waitForPageLoad();
     }
 
 
